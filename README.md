@@ -31,3 +31,6 @@ I took 1 month of team treehouse online paid programming education prior to scri
 I quit teamtreehouse 1 month after paying the basic membership. I wasnt even enrolled in a tech degree because i wanted to try teamtreehouse and i loved my 1 month still. i was tired of javascript already though, as i had already tried a few things in unity3d C# and i loved C#...
 
 But then i got bored after a couple weeks/months of unity3d, and i played void expanse with my bro for a couple minutes and after a couple minutes, i wanted to start modding that game void expanse. I was hooked.
+
+thank you for reading me,
+steve chassé 
