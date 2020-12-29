@@ -3,7 +3,7 @@ Date: 2020/dec/29
 
 using unity 2017.4.26f1
 # FastRandomEnclosedVoxelTerrainLevel
-The random terrain function to select a position for a tile to be setup is coming from a youtuber. The chunk vertices/triangles/indexes is coming from Craig Perko's old minecraft tutorial. The walls texture, i have figured out how to do it with help from stackoverflow and the unity3d forums.
+The random terrain function to select a position for a tile to be setup is coming from the youtube GucioDevs here https://www.youtube.com/watch?v=k1pWpYEt2UE&list=PLKlaUriRRX5NhRAdVKZEozhnWsKKB6tjC&index=7&ab_channel=GucioDevs. The chunk vertices/triangles/indexes is coming from Craig Perko's old minecraft tutorial here https://www.youtube.com/watch?v=YpHQ-Kykp_s&ab_channel=CraigPerko. The walls texture, i have figured out how to do it with help from stackoverflow and the unity3d forums.
 
 i built this in my free time.
 steve chassé
