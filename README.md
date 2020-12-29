@@ -8,5 +8,9 @@ steve chassé
 It takes a slow 10 seconds to generate this enclosed terrain. It will be better in the future.
 
 <img src="https://i.ibb.co/9grgr80/enclosed-Voxel-Terrain.png" alt="enclosed-Voxel-Terrain" border="0">
+
+chunk script parameters
 <img src="https://i.ibb.co/SdCyG8v/chunk-Script-Settings.png" alt="chunk-Script-Settings" border="0">
+
+scene terrain object with script parameters
 <img src="https://i.ibb.co/BqWyjVw/editor-Mono-Behavior-Scripts.png" alt="editor-Mono-Behavior-Scripts" border="0">
