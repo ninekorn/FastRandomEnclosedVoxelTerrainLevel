@@ -180,7 +180,10 @@ public class LevelGenerator4 : MonoBehaviour
 
     public static LevelGenerator4 currentLevelGen;
 
+    [HideInInspector]
     public GameObject[] tiles;
+
+    [HideInInspector]
     public GameObject wall;
 
     public int tileAmount;
@@ -209,8 +212,10 @@ public class LevelGenerator4 : MonoBehaviour
     public float yAmount;
 
 
+    [HideInInspector]
     public List<Vector3> adjacentWall = new List<Vector3>();
 
+    [HideInInspector]
     public List<Vector3> createdWall = new List<Vector3>();
 
     //public Dictionary<Vector3, Vector3> adjacentWall = new Dictionary<Vector3, Vector3>();
@@ -290,8 +295,8 @@ public class LevelGenerator4 : MonoBehaviour
     [HideInInspector]
     public List<Vector3> threeWayWallBack = new List<Vector3>();
 
-    public GameObject sphere;
-    public GameObject sphere1;
+    //public GameObject sphere;
+    //public GameObject sphere1;
 
     public float chunkWidth = 10;
     
@@ -303,7 +308,7 @@ public class LevelGenerator4 : MonoBehaviour
 
     List<Vector3> floorTilesList = new List<Vector3>();
 
-    public GameObject leftWallz;
+    /*public GameObject leftWallz;
     public GameObject rightWallz;
     public GameObject frontWallz;
     public GameObject backWallz;
@@ -316,7 +321,22 @@ public class LevelGenerator4 : MonoBehaviour
     public GameObject leftFrontOutsideCornerWall;
     public GameObject RightFrontOutsideCornerWall;
     public GameObject leftBackOutsideCornerWall;
-    public GameObject RightBackOutsideCornerWall;
+    public GameObject RightBackOutsideCornerWall;*/
+
+    GameObject leftWallz;
+    GameObject rightWallz;
+    GameObject frontWallz;
+    GameObject backWallz;
+
+    GameObject leftFrontInsideCornerWall;
+    GameObject RightFrontInsideCornerWall;
+    GameObject leftBackInsideCornerWall;
+    GameObject RightBackInsideCornerWall;
+
+    GameObject leftFrontOutsideCornerWall;
+    GameObject RightFrontOutsideCornerWall;
+    GameObject leftBackOutsideCornerWall;
+    GameObject RightBackOutsideCornerWall;
 
     public GameObject floorTiles;
 
@@ -344,7 +364,22 @@ public class LevelGenerator4 : MonoBehaviour
 
     void Awake()
     {
-        
+        leftWallz = floorTiles;
+        rightWallz = floorTiles;
+        frontWallz = floorTiles;
+        backWallz = floorTiles;
+
+        leftFrontInsideCornerWall = floorTiles;
+        RightFrontInsideCornerWall = floorTiles;
+        leftBackInsideCornerWall = floorTiles;
+        RightBackInsideCornerWall = floorTiles;
+
+        leftFrontOutsideCornerWall = floorTiles;
+        RightFrontOutsideCornerWall = floorTiles;
+        leftBackOutsideCornerWall = floorTiles;
+        RightBackOutsideCornerWall = floorTiles;
+
+
         //chunkWidth = chunkWidth * 0.25f;
         //tileSize = tileSize * 0.25f;
         currentLevelGen = this;
@@ -617,22 +652,83 @@ public class LevelGenerator4 : MonoBehaviour
 
             if (counter999 == 0)
             {
+                totalTiles = toRemove.Count;
 
                 for (int i = 0; i < toRemove.Count; i++)
                 {
                     var currentTile = toRemove[i];
                     StartCoroutine(buildFloorTiles());
                 }
+
+
+
+                //chunks = new List<GameObject>();
+                //chunkz = GameObject.FindGameObjectsWithTag("chunks");
+                //StartCoroutine(buildFaces());
+      
                 counter999 = 1;
             }
+
+
+            //singleChunk.GetComponent<newFloorTiles>().Regenerate();
+
+            //GetComponent<startGeneratingFaces>().BuildFaces();
+
+
             counter = 2;
         }
+
+
+    
+
+        if (counter == 2)
+        {
+            //Debug.Log("total: " + totalTiles + " corout: " + countingCoroutines);
+
+            if (countingCoroutinesStart == countingCoroutinesEnd)
+            {
+                BuildFaces();
+                counter = 3;
+            }
+        }
+
     }
 
+    int totalTiles = 0;
+    int countingCoroutinesStart = 0;
+    int countingCoroutinesEnd = 0;
+
+    List<GameObject> chunks;
+    GameObject[] chunkz;
+
+    //List<Vector3> createdTiles = new List<Vector3>();
+    //public Dictionary<Vector3, Vector3> createdTiles = new Dictionary<Vector3, Vector3>();
+    List<Vector3> leftWalls = new List<Vector3>();
+    public GameObject chunk;
+
+
+    public void BuildFaces()
+    {
+        chunks = new List<GameObject>();
+        chunkz = GameObject.FindGameObjectsWithTag("chunks");
+        StartCoroutine(buildFaces());
+    }
+
+    //WaitForSeconds waiting = new WaitForSeconds(0.5f);
+    IEnumerator buildFaces()
+    {
+        for (int i = 0; i < chunkz.Length; i++)
+        {
+            GameObject singleChunk = chunkz[i];
+            singleChunk.GetComponent<newFloorTiles>().Regenerate();
+            yield return new WaitForSeconds(0f);
+        }
+        yield return new WaitForSeconds(0f);
+    }
 
     IEnumerator buildWalls(Vector3 currentTile)
     {
-
+       
         /////////////////////////////////////LEFTWALL/////////////////////////////////////////
         bool leftTilly0 = findTiles(currentTile.x - chunkWidth *blockSize, currentTile.z);
         bool rightTilly0 = findTiles(currentTile.x + chunkWidth , currentTile.z);  
@@ -1246,6 +1342,16 @@ public class LevelGenerator4 : MonoBehaviour
         }
 
         yield return new WaitForSeconds(BuildingWaitTime);
+
+
+        /*if (counter==2)
+        {
+            BuildFaces();
+            counter = 3;
+        }
+
+        Debug.Log("done");*/
+
        // Instantiate(sphere, currentTile, Quaternion.identity);
     }
 
@@ -1532,6 +1638,8 @@ public class LevelGenerator4 : MonoBehaviour
 
     IEnumerator buildFloorTiles()
     {
+        countingCoroutinesStart++;
+
         yield return new WaitForSeconds(BuildingWaitTime);
 
         for (int i = 0; i < toRemove.Count; i++)
@@ -1545,6 +1653,9 @@ public class LevelGenerator4 : MonoBehaviour
             yield return new WaitForSeconds(BuildingWaitTime);
         }
         yield return new WaitForSeconds(BuildingWaitTime);
+
+        countingCoroutinesEnd++;
+
     }
 
 

@@ -56,23 +56,22 @@ public class newFloorTiles : MonoBehaviour
     public string seed;
     float seed0;
 
-
     public Dictionary<List<Vector3>, List<int>> TopFaceVerts = new Dictionary<List<Vector3>, List<int>>();
 
     float updateTime;
 
     public bool useRandomSeed;
 
-    [Range(0, 100)]
-    public int randomFillPercent;
+    //[Range(0, 100)]
+    //public int randomFillPercent;
 
     //int[,] map;
 
     int neighbourWallTiles;
     public float planeSize = 1;
 
-    public Texture rocks;
-    public Material weed;
+    //public Texture rocks;
+    //public Material weed;
 
 
     float noiseValue;
@@ -144,7 +143,7 @@ public class newFloorTiles : MonoBehaviour
     List<Vector3> toRemove = new List<Vector3>();
 
     public float blockSize;
-    public GameObject sphere;
+    //public GameObject sphere;
 
     public float floorHeight;
 

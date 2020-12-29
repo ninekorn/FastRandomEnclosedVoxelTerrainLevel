@@ -80,6 +80,14 @@ public class startGeneratingFaces : MonoBehaviour {
 
     }
 
+
+    public void BuildFaces()
+    {
+        chunks = new List<GameObject>();
+        chunkz = GameObject.FindGameObjectsWithTag("chunks");
+        StartCoroutine(buildFaces());
+    }
+
     //WaitForSeconds waiting = new WaitForSeconds(0.5f);
     IEnumerator buildFaces()
     {
