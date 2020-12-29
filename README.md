@@ -5,7 +5,7 @@ The random terrain function to select a position for a tile to be setup is comin
 i built this in my free time.
 steve chassé
 
-It takes a slow 10 seconds to generate this enclosed terrain. It will be better in the future.
+It takes a slow 10 seconds to generate this enclosed terrain:
 
 <img src="https://i.ibb.co/9grgr80/enclosed-Voxel-Terrain.png" alt="enclosed-Voxel-Terrain" border="0">
 
